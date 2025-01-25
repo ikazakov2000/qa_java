@@ -4,14 +4,16 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Spy;
+import org.mockito.Mock;
 
+import static com.example.Lion.animalSexFemale;
+import static com.example.Lion.animalSexMale;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @RunWith(Parameterized.class)
 public class LionParamsTest {
 
-    @Spy
+    @Mock
     Feline feline;
 
     private final String animalSex;

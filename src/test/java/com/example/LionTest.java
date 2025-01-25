@@ -2,30 +2,24 @@ package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Spy;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.example.Animal.foodPredator;
 import static com.example.Lion.animalSexFemale;
 import static com.example.Lion.animalSexMale;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
 
-    @Spy
+    @Mock
     Feline feline;
-    @Spy
-    Lion lion;
-
-    public LionTest() throws Exception {
-        this.lion = new Lion(feline, animalSexMale);
-    }
 
     @Test
     public void getKittens() throws Exception {
+        Mockito.when(feline.getKittens()).thenReturn(1);
         Lion lion = new Lion(feline, animalSexMale);
         assertEquals(1, lion.getKittens());
     }
@@ -44,6 +38,7 @@ public class LionTest {
 
     @Test
     public void getFood() throws Exception {
+        Mockito.when(feline.eatMeat()).thenReturn(foodPredator);
         Lion lion = new Lion(feline, animalSexMale);
         assertEquals(foodPredator, lion.getFood());
     }
